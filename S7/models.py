@@ -1,5 +1,4 @@
 from peewee import *
-from test_data import Tutor
 
 db = SqliteDatabase('S7.db')
 
@@ -14,7 +13,7 @@ class Group(BaseModel):
     prefix = CharField()
     code = CharField()
     class_number = IntegerField()
-    id_tutor = ForeignKeyField(Tutor, backref='tutors')
+    id_tutor = IntegerField()
     status = BooleanField()
     count_student = IntegerField()
 
