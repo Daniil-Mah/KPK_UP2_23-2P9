@@ -8,16 +8,14 @@ class BaseModel(Model):
         database = db
 
 class Profil(BaseModel):
-    first_name = CharField()
-    second_name = CharField()
-    last_name = CharField(default=Null)
+    full_name = CharField()
     telephone = CharField(max_length=16)
     email = CharField()
     path_to_photo = CharField()
     is_active = BooleanField(default=True)
     
     def save(self, *args, **kwargs):
-        pattern = r'^\+7$\d{3}$\d{3}-\d{2}-\d{2}$'
+        pattern = r'^\+7$\($\d{3}$\)$\d{3}-\d{2}-\d{2}$'
         if not re.match(pattern, self.telephone):
             raise ValueError("Неверный формат номера телефона. Ожидается: +7(XXX)XXX-XX-XX")
         
