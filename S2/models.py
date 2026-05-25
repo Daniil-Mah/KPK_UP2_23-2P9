@@ -18,7 +18,7 @@ class Profil(BaseModel):
     
     def save(self, *args, **kwargs):
         pattern = r'^\+7\d{14}$'
-        if not re.match(pattern, self.phone):
+        if not re.match(pattern, self.telephone):
             raise ValueError("Неверный формат номера телефона. Ожидается: +7(XXX)XXX-XX-XX")
         
         return super().save(*args, **kwargs)
