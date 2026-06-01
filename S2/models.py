@@ -22,7 +22,7 @@ class Profile(BaseModel):
         return super().save(*args, **kwargs)
 
 class NotificationSettings(BaseModel):
-    profil_id = ForeignKeyField(Profile, backref='notification_settings')
+    profile_id = ForeignKeyField(Profile, backref='notification_settings')
     parameter = CharField()
     value = CharField()
 
