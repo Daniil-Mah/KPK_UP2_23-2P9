@@ -7,10 +7,10 @@ class BaseModel(Model):
     class Meta:
         database = db
 
-class Profil(BaseModel):
+class Profile(BaseModel):
     full_name = CharField()
-    telephone = CharField(max_length=16)
-    email = CharField(max_length=254)
+    telephone = CharField(max_length=16, unique=True)
+    email = CharField(max_length=254, unique=True)
     path_to_photo = CharField()
     is_active = BooleanField(default=True)
     
