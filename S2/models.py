@@ -1,7 +1,7 @@
 import re
 from peewee import *
 
-db = SqliteDatabase('S2_Profil_datebase.db')
+db = SqliteDatabase('S2_Profile_datebase.db')
 
 class BaseModel(Model):
     class Meta:
@@ -22,9 +22,9 @@ class Profile(BaseModel):
         return super().save(*args, **kwargs)
 
 class NotificationSettings(BaseModel):
-    profil_id = ForeignKeyField(Profil, backref='notification_settings')
+    profil_id = ForeignKeyField(Profile, backref='notification_settings')
     parameter = CharField()
     value = CharField()
 
 if __name__ == '__main__':
-    db.create_tables([Profil, NotificationSettings])
+    db.create_tables([Profile, NotificationSettings])
