@@ -22,7 +22,9 @@ class Profil(BaseModel):
         return super().save(*args, **kwargs)
 
 class NotificationSettings(BaseModel):
-    notification_turn = BooleanField(default=True)
+    profil_id = ForeignKeyField(Profil, backref='profil_notification_setting')
+    parameter = CharField()
+    value = CharField()
 
 if __name__ == '__main__':
     db.create_tables([Profil, NotificationSettings])
