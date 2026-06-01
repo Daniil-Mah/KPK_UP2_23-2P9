@@ -10,7 +10,7 @@ class BaseModel(Model):
 class Profil(BaseModel):
     full_name = CharField()
     telephone = CharField(max_length=16)
-    email = CharField()
+    email = CharField(max_length=254)
     path_to_photo = CharField()
     is_active = BooleanField(default=True)
     
@@ -22,7 +22,7 @@ class Profil(BaseModel):
         return super().save(*args, **kwargs)
 
 class NotificationSettings(BaseModel):
-    profil_id = ForeignKeyField(Profil, backref='profil_notification_setting')
+    profil_id = ForeignKeyField(Profil, backref='notification_settings')
     parameter = CharField()
     value = CharField()
 
